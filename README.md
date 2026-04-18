@@ -3,7 +3,6 @@
 **Design of a RISC-V Based Custom Hardware Accelerator for Sobel Edge Detection Processing**
 
 > Author: **Junze Jiang**
-> Supervisor: Professor John Goodenough
 
 <p align="center">
   <img src="Image/lena_original.jpg" width="240">
@@ -14,6 +13,35 @@
   <em>(a) Original &nbsp;&nbsp;&nbsp; (b) CPU-only &nbsp;&nbsp;&nbsp; (c) Hardware accelerator</em>
 </p>
 
+---
+
+## 📁 Repository Structure
+
+```
+Feature_Extraction_by_Sobel_Filter_Accelerator/
+├── original_rvfpganexys.bit              # Bitstream: baseline reference SoC
+├── accelerator_rvfpganexys.bit           # Bitstream: SoC + Sobel accelerator
+│
+├── original_sw/                          # Software for baseline SoC (cycle counting)
+├── accelerator_sw/                       # Software for accelerator SoC
+│                                         #   (counts cycles for both paths + golden compare)
+│
+├── RVFPGA_CodeDocs/src/SweRVolfSoC/Peripherals/SobelAccelerator/
+│                                         # Accelerator HDL integrated into reference SoC
+│
+└── Accelerator_verilog_code/             # Standalone HDL + per-block testbenches
+    ├── basic_ip.v
+    ├── controlpath_engine.v
+    ├── datapath_kernel_operation.v
+    ├── pfb_addr_map.v
+    ├── pfb_bank_ram.v
+    ├── pfb_top.v
+    ├── engine_pfb_top.v
+    ├── dma_module.v
+    ├── csr_wb.v
+    ├── dma_csr_top.v
+    └── sobel_acc_top.v
+```
 ---
 
 ## 📖 Overview
@@ -224,36 +252,6 @@ The critical path remains within the EH1 CPU core — the accelerator does **not
 <p align="center">
   <em>(a) Original &nbsp;&nbsp;&nbsp; (b) CPU-only &nbsp;&nbsp;&nbsp; (c) Hardware accelerator</em>
 </p>
-
----
-
-## 📁 Repository Structure
-
-```
-Feature_Extraction_by_Sobel_Filter_Accelerator/
-├── original_rvfpganexys.bit              # Bitstream: baseline reference SoC
-├── accelerator_rvfpganexys.bit           # Bitstream: SoC + Sobel accelerator
-│
-├── original_sw/                          # Software for baseline SoC (cycle counting)
-├── accelerator_sw/                       # Software for accelerator SoC
-│                                         #   (counts cycles for both paths + golden compare)
-│
-├── RVFPGA_CodeDocs/src/SweRVolfSoC/Peripherals/SobelAccelerator/
-│                                         # Accelerator HDL integrated into reference SoC
-│
-└── Accelerator_verilog_code/             # Standalone HDL + per-block testbenches
-    ├── basic_ip.v
-    ├── controlpath_engine.v
-    ├── datapath_kernel_operation.v
-    ├── pfb_addr_map.v
-    ├── pfb_bank_ram.v
-    ├── pfb_top.v
-    ├── engine_pfb_top.v
-    ├── dma_module.v
-    ├── csr_wb.v
-    ├── dma_csr_top.v
-    └── sobel_acc_top.v
-```
 
 ---
 
