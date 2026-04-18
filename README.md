@@ -68,7 +68,7 @@ A programmable threshold (default = 60) classifies each pixel as edge or non-edg
     <tr>
       <!-- 左子图 (a) -->
       <td width="32%" align="center" valign="top">
-        <img src="Image/Gradient Theory.png" width="80%" alt="Sobel kernel locations">
+        <img src="Image/Gradient_Theory.png" width="80%" alt="Sobel kernel locations">
         <br><br>
         <em>(a) A simple example of three different types of Sobel kernel locations</em>
       </td>
@@ -96,7 +96,7 @@ The accelerator is organised into two top-level subsystems:
 - **DMA + CSR subsystem** — handles CPU configuration (Wishbone) and bulk data transfer (AXI4)
 - **Engine + PFB subsystem** — performs the Sobel computation on on-chip BRAM
 
-![SoC architecture block diagram](Image/architecture block diagram.png)
+![SoC architecture block diagram](Image/architecture_block_diagram.png)
 
 ### Execution flow
 
@@ -116,7 +116,7 @@ The accelerator is organised into two top-level subsystems:
 
 The engine consists of a **control-path FSM** (pixel addressing + sliding window) and a **three-stage pipelined datapath** (gradient → magnitude → threshold + clip).
 
-![SoC Engine FSM](Image/Sobel Engine FSM.png)
+![SoC Engine FSM](Image/Sobel_Engine_FSM.png)
 
 The datapath uses only 19 combinational IP instances from `basic_ip.v`:
 
@@ -124,7 +124,7 @@ The datapath uses only 19 combinational IP instances from `basic_ip.v`:
 |---|:---:|:---:|:---:|:---:|:---:|:---:|:---:|
 | Count | 4 | 6 | 5 | 2 | 1 | 1 | **19** |
 
-![Three-stage pipelined Sobel datapath schematic](Image/engine datapath.png)
+![Three-stage pipelined Sobel datapath schematic](Image/engine_datapath.png)
 
 ### Private Frame Buffer (PFB)
 
@@ -134,7 +134,7 @@ The datapath uses only 19 combinational IP instances from `basic_ip.v`:
 - **Read-return tagging** (`SRC_DMA_RD` / `SRC_ENG_RD`) routes one-cycle-latency BRAM reads back to the correct requester
 - `wr_conflict` flag raised on same-bank, same-address simultaneous writes (DMA wins)
 
-![Private frame buffer four-bank interleaved architecture](Image/pfb schematic diagram.png)
+![Private frame buffer four-bank interleaved architecture](Image/pfb_schematic_diagram.png)
 
 
 ### DMA Module
