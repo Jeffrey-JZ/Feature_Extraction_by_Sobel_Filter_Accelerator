@@ -2,3 +2,8 @@
 *.vh   linguist-language=Verilog
 *.sv   linguist-language=SystemVerilog
 *.svh  linguist-language=SystemVerilog
+
+*.cpp  linguist-vendored
+*.cc   linguist-vendored
+*.h    linguist-vendored
+*.hpp  linguist-vendored
