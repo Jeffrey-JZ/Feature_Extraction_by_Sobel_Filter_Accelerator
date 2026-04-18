@@ -277,12 +277,3 @@ Feature_Extraction_by_Sobel_Filter_Accelerator/
 5. Visualise with `view_edge.py`.
 
 ---
-
-## 🌍 Wider Context
-
-- **Environmental** — 85.5× speedup keeps the CPU idle for >99% of the original compute time, substantially reducing energy per frame; the accelerator itself adds only ~6 mW dynamic power.
-- **Privacy** — on-chip processing keeps image data local, aligning with UK GDPR data-minimisation principles.
-- **Legal / IP** — the Sobel algorithm has been in the public domain since 1968; all RTL was written from scratch; built entirely on open-source / free-tier tooling (RVfpga + Vivado WebPACK).
-- **Economic** — demonstrates that real-time edge detection is achievable on low-cost FPGAs without GPU hardware.
-
----
