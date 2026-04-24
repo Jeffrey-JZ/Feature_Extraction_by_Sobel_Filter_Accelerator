@@ -2,4 +2,6 @@
 
 **Design of a RISC-V Based Custom Hardware Accelerator for Sobel Edge Detection Processing**
 
-> Author: **Junze Jiang**
+> Supervisor: **Professor John Goodenough**
+>
+> Author: **Junze Jiang** - *The University of Sheffield*
